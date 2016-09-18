@@ -15,6 +15,9 @@
 
 #include "utils.h"
 
+// REDUNDANT INCLUDES... TODO eliminate
+#include <iostream> 
+
 Model::Model(std::shared_ptr<Matrix> wi,
              std::shared_ptr<Matrix> wo,
              std::shared_ptr<Args> args,
@@ -259,6 +262,37 @@ void Model::buildTree(const std::vector<int64_t>& counts) {
     paths.push_back(path);
     codes.push_back(code);
   }
+
+  this->printTree();
+}
+
+void Model::printTree() {
+
+  std::cout << "Printing Tree...." << std::endl;
+  std::cout << "Tree Size (all nodes leaves and branches):";
+  std::cout << 2 * osz_ - 1 << std::endl;
+
+  for (int32_t i = 0; i < 2 * osz_ - 1; i++) {
+    std::cout << "Node:";
+    std::cout << i << std::endl;
+
+    std::cout << "Parent:";
+    std::cout << tree[i].parent << std::endl;
+
+    std::cout << "Left:";
+    std::cout << tree[i].left << std::endl;
+
+    std::cout << "Right:";
+    std::cout << tree[i].right << std::endl;
+
+    std::cout << "Count:";
+    std::cout << tree[i].count << std::endl;
+
+    std::cout << "Binary:";
+    std::cout << tree[i].binary << std::endl;
+    std::cout << "\n";
+  }
+
 }
 
 real Model::getLoss() {

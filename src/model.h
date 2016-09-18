@@ -74,6 +74,7 @@ class Model {
     void initTableNegatives(const std::vector<int64_t>&);
     int32_t getNegative(int32_t target);
     void buildTree(const std::vector<int64_t>&);
+    void printTree();
     real getLoss();
 
     std::minstd_rand rng;
