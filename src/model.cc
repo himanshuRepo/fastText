@@ -272,7 +272,11 @@ void Model::printTree() {
   std::cout << "Tree Size (all nodes leaves and branches):";
   std::cout << 2 * osz_ - 1 << std::endl;
 
+  std::vector<bool>& binaryCode = codes[0];
+  std::vector<int32_t>& pathToRoot = paths[0];
+
   for (int32_t i = 0; i < 2 * osz_ - 1; i++) {
+
     std::cout << "Node:";
     std::cout << i << std::endl;
 
@@ -290,6 +294,24 @@ void Model::printTree() {
 
     std::cout << "Binary:";
     std::cout << tree[i].binary << std::endl;
+
+    if(i < osz_) {
+      binaryCode = codes[i];
+      pathToRoot = paths[i];
+      std::cout << "Code:";
+      for (int32_t j = 0; j < binaryCode.size(); j++) {
+        std::cout << binaryCode[j];
+        std::cout << " ";
+      }
+      std::cout << "\n Path:";
+      for (int32_t j = 0; j < pathToRoot.size(); j++) {
+        std::cout << pathToRoot[j];
+        std::cout << " ";
+      }
+      std::cout << "\n";
+    }
+
+
     std::cout << "\n";
   }
 
