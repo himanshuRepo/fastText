@@ -197,7 +197,7 @@ void Dictionary::threshold(int64_t t) {
       return e1.count > e2.count;
     });
   words_.erase(remove_if(words_.begin(), words_.end(), [&](const entry& e) {
-        return e.type == entry_type::word && e.count < t;
+        return e.count < t;
       }), words_.end());
   words_.shrink_to_fit();
   size_ = 0;
